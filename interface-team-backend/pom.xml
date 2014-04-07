@@ -1,0 +1,222 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>br.com._4connection.interface-team</groupId>
+  <artifactId>interface-team-backend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>interface-team-backend</name>
+  <description>Backend da arquitetura de interface.</description>
+  
+  	<properties>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>ISO-8859-1</project.reporting.outputEncoding>
+		<compileSource>1.7</compileSource>
+
+		<jboss.bom.version>6.2.0.GA</jboss.bom.version>
+		<jboss.jee.spec.version>3.0.2.Final</jboss.jee.spec.version>
+		<commons.lang.version>2.6-redhat-2</commons.lang.version>
+		<commons-collections.version>3.2.1-redhat-2</commons-collections.version>
+		<net.sf.dozer.version>5.4.0</net.sf.dozer.version>
+		<commons.httpclient.version>4.2.1-redhat-1</commons.httpclient.version>
+	</properties>
+
+
+
+	<dependencyManagement>
+
+		<dependencies>
+
+			<dependency>
+				<groupId>org.jboss.bom.eap</groupId>
+				<artifactId>jboss-javaee-6.0-with-tools</artifactId>
+				<version>${jboss.bom.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.bom.eap</groupId>
+				<artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
+				<version>${jboss.bom.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+				<artifactId>jboss-javaee-all-6.0</artifactId>
+				<version>${jboss.jee.spec.version}</version>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons.lang.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				 <groupId>org.slf4j</groupId>
+				 <artifactId>jcl-over-slf4j</artifactId>
+				 <version>1.7.2.redhat-2</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons-collections.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>net.sf.dozer</groupId>
+				<artifactId>dozer-osgi</artifactId>
+				<version>${net.sf.dozer.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${commons.httpclient.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+		</dependencies>
+
+	</dependencyManagement>
+
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-all-6.0</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer-osgi</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.as</groupId>
+			<artifactId>jboss-as-arquillian-container-remote</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.arquillian.protocol</groupId>
+			<artifactId>arquillian-protocol-servlet</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${compileSource}</source>
+					<target>${compileSource}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<classifier>ejb</classifier>
+					<ejbVersion>${ejb.version}</ejbVersion>
+					<generateClient>true</generateClient>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<useDefaultManifestFile>true</useDefaultManifestFile>
+					<attachClasses>true</attachClasses>
+					<archive>
+						<index>true</index>
+						<manifest>
+							<addClasspath>false</addClasspath>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+
+						<manifestEntries>
+							<Dependencies>org.apache.commons.lang,fourconnection.net.sf.dozer,org.hibernate,org.hibernate.envers,org.apache.commons.collections,org.apache.httpcomponents</Dependencies>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>http://198.1.72.124:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://198.1.72.124:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
+</project>
