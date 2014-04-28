@@ -3,9 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com._4connection.interface-team</groupId>
 	<artifactId>interface-team-view</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>interface-team-view</name>
 	<description>A View da arquitetura de interface.</description>
+	
 
 	<properties>
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
@@ -190,19 +192,7 @@
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<useDefaultManifestFile>true</useDefaultManifestFile>
-					<attachClasses>true</attachClasses>
-					<archive>
-						<index>true</index>
-						<manifest>
-							<addClasspath>false</addClasspath>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-						</manifest>
-
-						<manifestEntries>
-							<Dependencies>org.apache.commons.lang,fourconnection.net.sf.dozer,org.hibernate,org.hibernate.envers,org.apache.commons.collections,org.apache.httpcomponents</Dependencies>
-						</manifestEntries>
-					</archive>
+					<attachClasses>true</attachClasses>				
 				</configuration>
 			</plugin>
 		</plugins>
